@@ -47,14 +47,10 @@ Image and mask
 <img src="./asset/0.jpg"  width="250" height="150">
 <img src="./asset/0_OUT.jpg"  width="250" height="150">
 
-Blended Segmentation : 
-
-<img src="./asset/blended_image.jpg"  width="250" height="150">
-
 
 **Colab NoteBook**
 
-- [Link](https://colab.research.google.com/drive/1aM2VOqfhwo84zSe-MS_i2JyWO8bgouqD?usp=sharing)
+- [Link](https://colab.research.google.com/drive/1JrUE7ZAB2ZA70wuwD3dlKwjJTpAoGAIy?usp=sharing)
 
 **Credits**
 
