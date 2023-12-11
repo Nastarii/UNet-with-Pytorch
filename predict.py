@@ -112,6 +112,6 @@ if __name__ == '__main__':
             result.save(out_filename)
             logging.info(f'Mask saved to {out_filename}')
 
-        if args.viz:
-            logging.info(f'Visualizing results for image {filename}, close to continue...')
-            plot_img_and_mask(img, mask)
+        #if args.viz:
+            #logging.info(f'Visualizing results for image {filename}, close to continue...')
+            #plot_img_and_mask(img, mask)
