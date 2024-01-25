@@ -147,7 +147,7 @@ if __name__ == '__main__':
     # Change here to adapt to your data
     # n_channels=3 for RGB images
     # n_classes is the number of probabilities you want to get per pixel
-    model = CMUNet(img_ch=3, output_ch=1, l=7, k=7)
+    model = CMUNet(n_channels=3, output_ch=1, l=7, k=7)
     model = model.to(memory_format=torch.channels_last)
 
     if args.load:
