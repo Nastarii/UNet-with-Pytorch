@@ -69,7 +69,7 @@ class up_conv(nn.Module):
 
 
 class CMUNet(nn.Module):
-    def __init__(self, img_ch=3, output_ch=1, l=7, k=7):
+    def __init__(self, n_channels=3, output_ch=1, l=7, k=7, n_classes=2):
         """
         Args:
             img_ch : input channel.
@@ -82,7 +82,7 @@ class CMUNet(nn.Module):
 
         # Encoder
         self.Maxpool = nn.MaxPool2d(kernel_size=2, stride=2)
-        self.Conv1 = conv_block(ch_in=img_ch, ch_out=64)
+        self.Conv1 = conv_block(ch_in=n_channels, ch_out=64)
         self.Conv2 = conv_block(ch_in=64, ch_out=128)
         self.Conv3 = conv_block(ch_in=128, ch_out=256)
         self.Conv4 = conv_block(ch_in=256, ch_out=512)
