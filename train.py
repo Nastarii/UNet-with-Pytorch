@@ -30,7 +30,7 @@ def train_model(
         epochs: int = 5,
         batch_size: int = 1,
         learning_rate: float = 1e-5,
-        val_percent: float = 0.1,
+        val_percent: float = 0.2,
         save_checkpoint: bool = True,
         img_scale: float = 0.5,
         amp: bool = False,
@@ -44,6 +44,7 @@ def train_model(
     # 2. Split into train / validation partitions
     n_val = int(len(dataset) * val_percent)
     n_train = len(dataset) - n_val
+    logging.info(f'Training Samples: {n_train} \nValidation Samples: {n_val}')
     train_set, val_set = random_split(dataset, [n_train, n_val], generator=torch.Generator().manual_seed(0))
 
     # 3. Create data loaders
@@ -106,7 +107,8 @@ def train_model(
                         for tag, value in model.named_parameters():
                             tag = tag.replace('/', '.')
 
-                        val_score = evaluate(model, val_loader, device, amp)
+                        val_score, iou_score, accuracy = evaluate(model, val_loader, device, amp)
+                        print(f'Dice Coef: {val_score}\nIOU: {iou_score}\nAccuracy: {accuracy}')
                         scheduler.step(val_score)
 
 
@@ -126,7 +128,7 @@ def get_args():
                         help='Learning rate', dest='lr')
     parser.add_argument('--load', '-f', type=str, default=False, help='Load model from a .pth file')
     parser.add_argument('--scale', '-s', type=float, default=0.5, help='Downscaling factor of the images')
-    parser.add_argument('--validation', '-v', dest='val', type=float, default=10.0,
+    parser.add_argument('--validation', '-v', dest='val', type=float, default=20.0,
                         help='Percent of the data that is used as validation (0-100)')
     parser.add_argument('--amp', action='store_true', default=False, help='Use mixed precision')
     parser.add_argument('--bilinear', action='store_true', default=False, help='Use bilinear upsampling')
