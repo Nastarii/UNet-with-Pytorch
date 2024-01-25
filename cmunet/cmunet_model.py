@@ -79,7 +79,10 @@ class CMUNet(nn.Module):
 
         """
         super(CMUNet, self).__init__()
-
+        self.n_classes = n_classes
+        self.n_channels = n_channels
+        self.bilinear = False
+        
         # Encoder
         self.Maxpool = nn.MaxPool2d(kernel_size=2, stride=2)
         self.Conv1 = conv_block(ch_in=n_channels, ch_out=64)
